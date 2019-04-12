@@ -196,9 +196,9 @@ Replace `rpt` with your package name, change the version to 0.1.0 (a first devel
 Type: Package
 -      Title: R Package Template
 +      Title: <a title for your package>
--      Version: 1.2.2
+-      Version: 1.4.0
 +      Version: 0.1.0
--      Date: 2018-12-31
+-      Date: 2019-04-11
 +      Date: <today-in-YYYY-MM-DD-format>
 Authors@R: c(
 -    person("Boris", "Steipe", email = "boris.steipe@utoronto.ca", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-1134-6758"))
@@ -291,6 +291,8 @@ This should install your package, and load the library. Attaching the library ru
 # 3 Develop
 
 You are done with configuring your baseline. **Check** your package frequently during development, and fix all errors right away. Package check errors have a way of interacting with each other that makes them hard to debug, it is best to address each one immediately when it occurs. Also, commit frequently and use meaningful commit messages. Your sanity will thank you. If you want to keep template files for reference, move them to the `./dev` directory so they will not be included in the package build. Finally, whenever you add new contents, reference it in the `LICENSE` file. Whenever you remove one of the original files, remove it from the `LICENSE` file. And whenever you modify a function, add your name to any existing authors.
+
+While developing package functions, NEVER use `source()` to load them. If you edit a function and then want to load it in the workspace, reload the library instead. That's necessary so that the script you are developing does not get out of sync with the library. If you change code: save, rebuild and re-install, this will make the functions from the `./R` directory available. Howev you **should** use `source()` for functions that are not built into the package - e.g. everything in the `./dev` folder.
 
 &nbsp;
 

@@ -16,7 +16,8 @@
 #' two in the files pane). \code{rptTwee()} also removes the OS specific
 #' .DS_store files.
 #'
-#' @param path (char) Path of the root directory of the tree. Defaults to the return value of \code{getwd()}.
+#' @param path (char) Path of the root directory of the tree. Defaults to the
+#'                    return value of \code{getwd()}.
 #' @param showHidden (bool) if TRUE, show hidden files and directories.
 #' @param showRd  (bool) if TRUE, show the root directoryof the tree.
 #' @param lev (int) Limit depth of recursive listing to \code{lev}. Default
@@ -25,7 +26,8 @@
 #'                    that are excluded from the tree. Defaults to exclude
 #'                    the files and directories that are not shown in the
 #'                    RStudio files pane.
-#' @return None. Invoked for the side-effect of printing the tree to console.
+#' @return NULL (invisibly)  Invoked for the side-effect of printing the
+#'                           tree to console.
 #'
 #' @author \href{https://orcid.org/0000-0002-1134-6758}{Boris Steipe} (aut)
 #'
@@ -43,7 +45,9 @@ rptTwee <- function(path = getwd(),
                     excl = c("^\\.git$",
                              "^\\.git/",
                              "^\\.Rproj.user",
-                             "\\.DS_Store")) {
+                             "\\.DS_Store$",
+                             "\\.o$",
+                             "\\.so$")) {
 
   fad <-  list.files(path = path,
                      recursive = TRUE,
@@ -93,6 +97,8 @@ rptTwee <- function(path = getwd(),
   fad <- paste0(fad, dirMarks)  # add dirmarks back
 
   cat(fad, sep = "\n")   # cat result
+
+  return(invisible(NULL))
 
 }
 

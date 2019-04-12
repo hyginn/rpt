@@ -2,6 +2,7 @@
 #
 # Purpose:
 # Version:
+# Version history:
 # Date:
 # Author:
 # License:
@@ -63,12 +64,11 @@ if (FALSE) { # <--- Keep this guard-block only if your script needs to be
 
 # ====  PACKAGES  ==============================================================
 # Load all required packages.
+#
+# Use non-standard libraries with  package::function() idiom if possible.
 
-if (requireNamespace(seqinr, quietly=TRUE)) {
-  library("seqinr")
-} else {
+if (! requireNamespace(seqinr, quietly=TRUE)) {
   install.packages("seqinr")
-  library(seqinr)
 }
 # Package information:
 #  library(help = seqinr)       # basic information
